@@ -2,9 +2,11 @@
 
 for file in $(find `dirname $0` -name "*.sh"); do
   abs=`readlink -f $file`
-  if [ $(grep -c "^source $abs" $HOME/.bashrc) -eq 0 ]; then
-    echo "source $abs" >> $HOME/.bashrc
+
+  if [ $(grep -c "^source $abs" /home/keith/.bashrc) -eq 0 ]; then
+    echo "setting source for: $abs"
+    echo "source $abs" >> /home/keith/.bashrc
   fi
 done
 
-source $HOME/.bashrc
+source /home/keith/.bashrc
