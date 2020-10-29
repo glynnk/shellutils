@@ -19,6 +19,9 @@ function aws_profiles() {
 function asp() {
   if [[ -z "$1" ]]; then
     unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_EB_PROFILE AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+    if [ -f $HOME/.aws/profile.src.me ]; then
+      rm -f $HOME/.aws/profile.src.me
+    fi
     echo AWS profile cleared.
     return
   fi
