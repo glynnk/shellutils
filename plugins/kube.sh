@@ -7,3 +7,7 @@ function kube-nodes() {
 	  jq -r '.items[] | "\(.metadata.name) \(.metadata.labels["beta.kubernetes.io/instance-type"]) \(.status.conditions[] | select(.type=="Ready") | .status)"' | \
 	  awk '{printf "%-2s %-50s %-15s %s\n", NR, $1, $2, $3}'
 }
+
+function kube-curl() {
+  kubectl run -i --tty --rm debug --image=curlimages/curl --restart=Never -- sh
+}
