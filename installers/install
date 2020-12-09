@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for file in $(find `dirname $0` -name "*.sh"); do
+  if [ ! -f /usr/local/bin/$(basename $file)  ]; then
+    echo "install-link: /usr/local/bin/$(basename $file)"
+    ln -s `readlink -f $file` /usr/local/bin/$(basename $file)
+  fi
+done

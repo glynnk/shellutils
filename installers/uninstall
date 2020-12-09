@@ -1,0 +1,9 @@
+
+#!/bin/bash
+
+for file in $(find `dirname $0` -name "*.sh"); do
+  if [ -f /usr/local/bin/$(basename $file)  ]; then
+    echo "uninstall-link: /usr/local/bin/$(basename $file)"
+    rm /usr/local/bin/$(basename $file)
+  fi
+done
